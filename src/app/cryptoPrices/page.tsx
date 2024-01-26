@@ -1,8 +1,48 @@
 import myImage from "@/assets/baclground.jpg";
 import Image from "next/image";
 
-export default function Prices() {
-  return (
+
+async function getCryptoPrices(symbol: string) {
+    try {
+        const res = await fetch('https://api.api-ninjas.com/v1/cryptoprice?symbol=' + symbol, {
+            headers: {
+                "X-Api-Key": process.env.CRYPTO_NINJA_API_KEY // Replace with your API key
+            }
+        })
+        const r_json = await res.json();
+        
+        return r_json.price;
+    } catch (err) {
+        console.log(err);
+        return null;
+    }
+}
+
+export default async function Prices() {
+    const prices = {
+        btc: await getCryptoPrices("BTCUSD"),
+        eth: await getCryptoPrices("ETHUSD"),
+        sol: await getCryptoPrices("SOLUSD"),
+    }
+    console.log(prices);
+    const currencies = [
+        {
+            name: "Bitcoin",
+            image: "",
+            type: "btc"
+        },
+        {
+            name: "Ethereum",
+            image: "",
+            type: "eth"
+        },
+        {
+            name: "Solana",
+            image: "",
+            type: "sol"
+        },
+    ]
+    return (
     <main className="min-h-screen h-full w-full bg-darkmode-500">
         <div className="w-full h-full flex flex-col items-center">
             <div className="relative p-4 mx-auto max-w-screen-2xl w-full overflow-x-auto shadow-md sm:rounded-lg">
@@ -26,30 +66,26 @@ export default function Prices() {
                             <th scope="col" className="px-6 py-3">
                                 Price
                             </th>
-                            <th scope="col" className="px-6 py-3">
-                                Market Cap.
-                            </th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr className="bg-darkmode-400 border-b dark:border-darkmode-300">
+                    {currencies.map((v, i) => (
+                        <tr key={i} className="bg-darkmode-400 border-b dark:border-darkmode-300">
                             <th scope="row" className="flex items-center px-6 py-4 text-gray-900 whitespace-nowrap dark:text-white">
                                 <Image className="w-10 h-10 rounded-full" src={myImage} alt="Jese image" />
                                 <div className="ps-3">
-                                    <div className="text-base font-semibold">Bitcoin</div>
+                                    <div className="text-base font-semibold">{v.name}</div>
                                 </div>  
                             </th>
                             <td className="px-6 py-4">
-                                $20,000
-                            </td>
-                            <td className="px-6 py-4">
-                                $2T
+                                {"$"+parseFloat(prices[v.type]).toFixed(2)}
                             </td>
                         </tr>
+                    ))}
                     </tbody>
                 </table>
             </div>
         </div>
     </main>
-  )
+)
 }
