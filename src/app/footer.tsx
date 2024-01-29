@@ -1,14 +1,14 @@
 import Image from "next/image";
-import cryptHaven from "@/assets/CryptoSquare.png";
+import cryptoHaven from "@/assets/CryptoHaven.png";
 import Link from "next/link";
 
 export default function Footer() {
   return (
-    <footer className="shadow bg-darkmode-500">
+    <footer className="shadow bg-transparent">
       <div className="w-full max-w-screen-xl mx-auto p-4 md:py-8">
           <div className="sm:flex sm:items-center sm:justify-between">
-              <a href="https://stencukpage.com/" className="flex items-center mb-4 sm:mb-0 space-x-3 rtl:space-x-reverse">
-                  <Image src={cryptHaven} alt="CryptHaven" className="scale-150 w-16 h-16" width={300} height={300} />
+              <a href="https://stencukpage.com/" className="flex items-center mb-4 sm:mb-0 space-x-6 font-oswald rtl:space-x-reverse">
+                  <Image src={cryptoHaven} alt="CryptHaven" className="scale-150 w-16 h-16" width={300} height={300} />
                   <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">CryptHaven</span>
               </a>
               <ul className="flex flex-wrap items-center mb-6 text-sm font-medium text-gray-500 sm:mb-0 dark:text-gray-400">

@@ -17,17 +17,8 @@ export default async function Prices() {
     const news = await getNews();
     const present = {};
 
-    const data = [
-        {
-            title: "Title of said news",
-            desc: "Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat.",
-            image: MyImg,
-            link: "inMiddleOfNowhere"
-        }
-    ]
-    
     return (
-    <main className="min-h-screen h-full py-16 w-full bg-darkmode-500">
+    <main className="min-h-screen h-full py-16 w-full ">
         <section className="w-full flex flex-col justify-center items-center">
             <div className="W-full grid grid-cols-2 md:grid-cols-3 gap-4 max-w-screen-xl p-4">
         {news.filter((v: any) => {

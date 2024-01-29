@@ -23,6 +23,9 @@ const config: Config = {
 				}
 			}
     },
+    fontFamily: {
+        oswald: ['var(--font-oswald)'],
+    }
   },
   plugins: [],
 }
