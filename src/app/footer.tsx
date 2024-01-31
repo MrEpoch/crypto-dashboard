@@ -9,7 +9,7 @@ export default function Footer() {
           <div className="sm:flex sm:items-center sm:justify-between">
               <a href="https://stencukpage.com/" className="flex items-center mb-4 sm:mb-0 space-x-6 font-oswald rtl:space-x-reverse">
                   <Image src={cryptoHaven} alt="CryptHaven" className="scale-150 w-16 h-16" width={300} height={300} />
-                  <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">CryptHaven</span>
+                  <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">CryptoHaven</span>
               </a>
               <ul className="flex flex-wrap items-center mb-6 text-sm font-medium text-gray-500 sm:mb-0 dark:text-gray-400">
                   <li>
